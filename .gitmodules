@@ -4,3 +4,6 @@
 [submodule "DemoDeFiAgent/lib/forge-std"]
 	path = DemoDeFiAgent/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "TestCustomAgent/lib/forge-std"]
+	path = TestCustomAgent/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
