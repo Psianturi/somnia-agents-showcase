@@ -1,7 +1,6 @@
 # Somnia AI Agents Showcase
 
 [![Somnia CLI](https://img.shields.io/badge/Built%20with-Somnia%20CLI-blue)](https://www.npmjs.com/package/somnia-ai-agent-cli)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Live demonstration projects showcasing various types of autonomous AI agents built on the Somnia blockchain using the [Somnia AI Agent CLI](https://www.npmjs.com/package/somnia-ai-agent-cli).
 
@@ -98,6 +97,6 @@ For complete documentation and advanced features, visit:
 
 These are demonstration projects. For contributing to the CLI tool itself, visit the [main repository](https://github.com/Psianturi/somnia-infra-kit).
 
-## 📄 License
+---
 
-MIT License - see LICENSE file for details.
+**Free to use for learning and development purposes.**
