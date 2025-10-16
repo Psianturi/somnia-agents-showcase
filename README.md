@@ -65,6 +65,14 @@ somnia-cli deploy
 somnia-cli status
 ```
 
+## Live Deployment Results
+
+**Successfully deployed agents:**
+- **DemoBasicAgent**: `0x0ae8b1BF59127693819567f6Fb2EB47Fb7C3BAd4` (Somnia Testnet)
+- **DemoDeFiAgent**: `0x5FbDB2315678afecb367f032d93F642f64180aa3` (Local Anvil)
+
+Both agents fully tested and operational.
+
 ## 📊 Test Results
 
 All demo projects include comprehensive test suites:
