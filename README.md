@@ -95,6 +95,21 @@ All demo projects include comprehensive test suites:
 - [Foundry](https://getfoundry.sh/) - Smart contract development framework
 - [Solidity](https://soliditylang.org/) - Smart contract programming language
 
+## 🌐 Ecosystem
+
+### [Somnia InfraKit Website](https://somnia-infrakit.vercel.app)
+Complete documentation and landing page featuring:
+- Interactive project showcase
+- Getting started guides
+- Architecture documentation
+- Live deployment information
+
+### [Somnia AI Agent CLI](https://github.com/Psianturi/somnia-infra-kit)
+The core development toolkit that powers these demo projects:
+- **NPM Package**: `somnia-ai-agent-cli@v1.0.5`
+- **Features**: Interactive wizards, multiple templates, auto-deployment
+- **Templates Used**: Basic Agent, DeFi Agent, Interactive Agent, Custom Wizard
+
 ## 📖 Documentation
 
 For complete documentation and advanced features, visit:
