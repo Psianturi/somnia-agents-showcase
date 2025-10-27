@@ -7,3 +7,9 @@
 [submodule "TestCustomAgent/lib/forge-std"]
 	path = TestCustomAgent/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "DemoInteractiveAgent/lib/forge-std"]
+	path = DemoInteractiveAgent/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "DemoWizardAgent/lib/forge-std"]
+	path = DemoWizardAgent/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std

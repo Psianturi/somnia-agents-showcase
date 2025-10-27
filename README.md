@@ -4,7 +4,7 @@
 
 Live demonstration projects showcasing various types of autonomous AI agents built on the Somnia blockchain using the [Somnia AI Agent CLI](https://www.npmjs.com/package/somnia-ai-agent-cli).
 
-## 🎯 Demo Projects
+##  Demo Projects
 
 ### 1. **DemoBasicAgent** - Simple Autonomous Agent
 - ✅ Basic trigger functionality
@@ -28,7 +28,7 @@ Live demonstration projects showcasing various types of autonomous AI agents bui
 - ✅ Custom features selection
 - ✅ Wizard-generated smart contract
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - Node.js >= 18.0.0
@@ -65,13 +65,21 @@ somnia-cli deploy
 somnia-cli status
 ```
 
+Deployment notes
+- Templates in this showcase were updated so `script/Deploy.s.sol` uses a safer deploy pattern. The deploy script now reads `PRIVATE_KEY` from `.env` with `vm.envUint("PRIVATE_KEY")`, calls `vm.startBroadcast(pk)`, and wraps constructor calls with `try/catch`. This helps Forge sign transactions and surface reverts instead of failing silently.
+- After a successful deploy the CLI writes `.deployment.json` (address, txHash, network, timestamp, txStatus). If `broadcast/run-latest.json` is not present, the CLI validates the on-chain receipt (via RPC) before accepting a deployment.
+- Security: never commit `.env` to git. Use `somnia-cli config` or secure CI secrets to provide `PRIVATE_KEY`.
+
 ## Live Deployment Results
 
 **Successfully deployed agents:**
 - **DemoBasicAgent**: `0x0ae8b1BF59127693819567f6Fb2EB47Fb7C3BAd4` (Somnia Testnet)
-- **DemoDeFiAgent**: `0x5FbDB2315678afecb367f032d93F642f64180aa3` (Local Anvil)
+- **DemoDeFiAgent**: `0x43B07bf47a4054eA0fd67Aaa191A6A651d81C1c7` (Somnia Testnet)
+- **DemoNFTAgent**: `0xE454c9d2bA1b79Fa7E6dE5Cd9E267c71E58F12Ec` (Somnia Testnet)
+- **DemoYieldAgent**: `0x9Cfb5C822D80FCB714a707bD0916237277531FcE` (Somnia Testnet)
+- **WizardAgent**: `0x2F65CAFF6eA3bE96E13244F4Bc6530B734A33427` (Somnia Testnet)
 
-Both agents fully tested and operational.
+These agents were exercised during local testing; consult each project's `.deployment.json` for exact txHash and timestamp.
 
 ## 📊 Test Results
 
@@ -82,7 +90,7 @@ All demo projects include comprehensive test suites:
 - **Interactive Agent**: 4 tests (standard agent functionality)
 - **Wizard Agent**: Custom tests based on selected features
 
-## 🌐 Network Configuration
+##  Network Configuration
 
 **Somnia Testnet:**
 - RPC URL: `https://dream-rpc.somnia.network`
@@ -106,17 +114,17 @@ Complete documentation and landing page featuring:
 
 ### [Somnia AI Agent CLI](https://github.com/Psianturi/somnia-infra-kit)
 The core development toolkit that powers these demo projects:
-- **NPM Package**: `somnia-ai-agent-cli@v1.0.5`
+- **NPM Package**: `somnia-ai-agent-cli@v1.1.0`
 - **Features**: Interactive wizards, multiple templates, auto-deployment
 - **Templates Used**: Basic Agent, DeFi Agent, Interactive Agent, Custom Wizard
 
-## 📖 Documentation
+##  Documentation
 
 For complete documentation and advanced features, visit:
 - [Somnia CLI Documentation](https://github.com/Psianturi/somnia-infra-kit)
 - [Somnia Network](https://somnia.network/)
 
-## 🤝 Contributing
+##  Contributing
 
 These are demonstration projects. For contributing to the CLI tool itself, visit the [main repository](https://github.com/Psianturi/somnia-infra-kit).
 
