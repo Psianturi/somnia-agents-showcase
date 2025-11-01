@@ -1,0 +1,9 @@
+{
+  "address": "0xaab32E4ADB5127f112272f279F6c74F12d489FB6",
+  "txHash": "0x22f779254be017eb13bcb5e9f1c2e33464f39044de732e11789f86a912446f6d",
+  "network": "somnia-testnet",
+  "timestamp": "2025-11-01T14:16:11.364Z",
+  "verified": true,
+  "txStatus": "success",
+  "wallet": "0x535EfE3671BB95C9cB2e0Dc77F7101A001476586"
+}

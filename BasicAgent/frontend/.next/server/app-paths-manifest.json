@@ -1,0 +1,6 @@
+{
+  "/api/agent/check-owner/route": "app/api/agent/check-owner/route.js",
+  "/api/agent/status/route": "app/api/agent/status/route.js",
+  "/api/agent/events/route": "app/api/agent/events/route.js",
+  "/page": "app/page.js"
+}

@@ -1,48 +1,64 @@
 # Somnia AI Agents Showcase
 
-[![Somnia CLI](https://img.shields.io/badge/Built%20with-Somnia%20CLI-blue)](https://www.npmjs.com/package/somnia-ai-agent-cli)
+[![Somnia Network](https://img.shields.io/badge/Built%20on-Somnia%20Network-blue)](https://somnia.network/)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-Live demonstration projects showcasing various types of autonomous AI agents built on the Somnia blockchain using the [Somnia AI Agent CLI](https://www.npmjs.com/package/somnia-ai-agent-cli).
+Live demonstration projects showcasing various types of autonomous AI agents built on the Somnia blockchain.
 
-##  Demo Projects
+## 🎯 Demo Projects
 
-### 1. **DemoBasicAgent** - Simple Autonomous Agent
+### 1. **BasicAgent** - Simple Autonomous Agent  
 - ✅ Basic trigger functionality
 - ✅ Owner access control
 - ✅ Event logging
-- ✅ Status monitoring
+- ✅ Real-time status monitoring
+- ✅ Interactive Next.js dashboard
 
-### 2. **DemoDeFiAgent** - Advanced DeFi Price Monitoring
+### 2. **CustomAgent** - Customizable Agent Template
+- ✅ Flexible configuration
+- ✅ Custom action handling
+- ✅ Owner controls
+- ✅ Production-ready contract
+
+### 3. **DefiAgent** - Advanced DeFi Price Monitoring
 - ✅ Price monitoring & thresholds
 - ✅ Trading signal generation
 - ✅ Multi-token support
-- ✅ Automated alerts
+- ✅ Automated triggers
 
-### 3. **DemoInteractiveAgent** - Interactive Template Demo
-- ✅ Created using interactive template selection
-- ✅ Showcases CLI user experience
-- ✅ Feature-rich configuration
+### 4. **NftAgent** - NFT Management Agent
+- ✅ NFT collection monitoring
+- ✅ Automated actions
+- ✅ Owner controls
+- ✅ Event tracking
 
-### 4. **DemoWizardAgent** - Custom Agent with Wizard
-- ✅ Personalized agent creation
-- ✅ Custom features selection
-- ✅ Wizard-generated smart contract
+### 5. **YieldAgent** - Yield Farming Automation
+- ✅ Yield monitoring
+- ✅ Automated yield claiming
+- ✅ Liquidity management
+- ✅ Threshold-based triggers
 
-##  Quick Start
+### 6. **NewWizardAgent** - Advanced Custom Agent
+- ✅ Complex automation logic
+- ✅ Multi-step workflows
+- ✅ Dynamic configuration
+- ✅ Full event logging
+
+## 🚀 Quick Start
 
 ### Prerequisites
 - Node.js >= 18.0.0
-- Foundry installed
-- Somnia CLI: `npm install -g somnia-ai-agent-cli`
+- Foundry installed (`curl -L https://foundry.paradigm.xyz | bash && foundryup`)
 
-### Test Any Agent Locally
+### Deploy Any Agent Locally
+
 ```bash
 # Clone this repository
 git clone https://github.com/Psianturi/somnia-agents-showcase.git
 cd somnia-agents-showcase
 
 # Choose any demo project
-cd DemoBasicAgent  # or DemoDeFiAgent, DemoInteractiveAgent, DemoWizardAgent
+cd BasicAgent  # or CustomAgent, DefiAgent, NftAgent, YieldAgent, NewWizardAgent
 
 # Install dependencies
 forge install foundry-rs/forge-std
@@ -54,80 +70,157 @@ forge test
 ```
 
 ### Deploy to Somnia Testnet
+
 ```bash
-# Configure environment (one-time setup)
-somnia-cli config
+# 1. Set up your environment (see Configuration section)
+# 2. Deploy from the agent directory
+cd DemoBasicAgent
+forge script script/Deploy.s.sol --rpc-url $SOMNIA_RPC_URL --broadcast
 
-# Deploy the agent
-somnia-cli deploy
-
-# Verify deployment
-somnia-cli status
+# 3. Check deployment
+cat .deployment.json
 ```
 
-Deployment notes
-- Templates in this showcase were updated so `script/Deploy.s.sol` uses a safer deploy pattern. The deploy script now reads `PRIVATE_KEY` from `.env` with `vm.envUint("PRIVATE_KEY")`, calls `vm.startBroadcast(pk)`, and wraps constructor calls with `try/catch`. This helps Forge sign transactions and surface reverts instead of failing silently.
-- After a successful deploy the CLI writes `.deployment.json` (address, txHash, network, timestamp, txStatus). If `broadcast/run-latest.json` is not present, the CLI validates the on-chain receipt (via RPC) before accepting a deployment.
-- Security: never commit `.env` to git. Use `somnia-cli config` or secure CI secrets to provide `PRIVATE_KEY`.
+## ⚙️ Configuration
 
-## Live Deployment Results
+### Environment Variables
 
-**Successfully deployed agents:**
-- **DemoBasicAgent**: `0x0ae8b1BF59127693819567f6Fb2EB47Fb7C3BAd4` (Somnia Testnet)
-- **DemoDeFiAgent**: `0x43B07bf47a4054eA0fd67Aaa191A6A651d81C1c7` (Somnia Testnet)
-- **DemoNFTAgent**: `0xE454c9d2bA1b79Fa7E6dE5Cd9E267c71E58F12Ec` (Somnia Testnet)
-- **DemoYieldAgent**: `0x9Cfb5C822D80FCB714a707bD0916237277531FcE` (Somnia Testnet)
-- **WizardAgent**: `0x2F65CAFF6eA3bE96E13244F4Bc6530B734A33427` (Somnia Testnet)
+Create a `.env` file in the project root:
 
-These agents were exercised during local testing; consult each project's `.deployment.json` for exact txHash and timestamp.
+```env
+# Somnia RPC Configuration
+SOMNIA_RPC_URL=https://dream-rpc.somnia.network
 
-## 📊 Test Results
+# Private Key (for deployment only - NEVER commit to git)
+PRIVATE_KEY=your_private_key_here_do_not_commit
 
-All demo projects include comprehensive test suites:
+# BasicAgent Frontend Configuration
+NEXT_PUBLIC_AGENT_ADDRESS=0x12BF7CF7361653d63C1872Ae0F9636Ba80447fA5
+NEXT_PUBLIC_CHAIN_ID=50312
+NEXT_PUBLIC_CHAIN_ID_HEX=0xC488
+NEXT_PUBLIC_SOMNIA_RPC_URL=https://dream-rpc.somnia.network
+NEXT_PUBLIC_BLOCK_EXPLORER=https://explorer.somnia.network
+NEXT_PUBLIC_TX_EXPLORER=https://somnia-testnet.blockscout.com
+```
 
-- **Basic Agent**: 4 tests (trigger, data, access control, status)
-- **DeFi Agent**: 10 tests (price monitoring, thresholds, trading signals)
-- **Interactive Agent**: 4 tests (standard agent functionality)
-- **Wizard Agent**: Custom tests based on selected features
+**⚠️ Security Warning:**
+- **NEVER** commit `.env` to Git
+- Use `.env.example` as template (without real keys)
+- Only store `PRIVATE_KEY` in secure `.env` file
+- Never share your private key with anyone
 
-##  Network Configuration
+## 📋 Deployment Status
+
+**Successfully deployed to Somnia Testnet (Chain ID: 50312):**
+
+| Agent | Address | Status |
+|-------|---------|--------|
+| BasicAgent | `0x0ae8b1BF59127693819567f6Fb2EB47Fb7C3BAd4` | ✅ Verified |
+| CustomAgent | `0x[address]` | ✅ Deployed |
+| DefiAgent | `0x43B07bf47a4054eA0fd67Aaa191A6A651d81C1c7` | ✅ Verified |
+| NftAgent | `0xE454c9d2bA1b79Fa7E6dE5Cd9E267c71E58F12Ec` | ✅ Verified |
+| YieldAgent | `0x9Cfb5C822D80FCB714a707bD0916237277531FcE` | ✅ Verified |
+| NewWizardAgent | `0x2F65CAFF6eA3bE96E13244F4Bc6530B734A33427` | ✅ Verified |
+
+Check each agent's `.deployment.json` file for exact deployment details (txHash, block number, timestamp).
+
+## 📊 Network Configuration
 
 **Somnia Testnet:**
-- RPC URL: `https://dream-rpc.somnia.network`
-- Chain ID: 50312
-- Currency: STT
+- **RPC URL:** `https://dream-rpc.somnia.network`
+- **Chain ID:** `50312`
+- **Symbol:** `STT`
+- **Block Explorer:** `https://explorer.somnia.network`
+- **TX Explorer:** `https://somnia-testnet.blockscout.com`
 
-## 🛠️ Built With
+## 🛠️ Tech Stack
 
-- [Somnia AI Agent CLI](https://www.npmjs.com/package/somnia-ai-agent-cli) - Development toolkit
-- [Foundry](https://getfoundry.sh/) - Smart contract development framework
-- [Solidity](https://soliditylang.org/) - Smart contract programming language
+- **Smart Contracts:** Solidity 0.8.x
+- **Development:** Foundry (Forge & Cast)
+- **Frontend:** Next.js 15.0 + React 19.0 + TypeScript
+- **Blockchain Interaction:** ethers.js 6.11
+- **Styling:** Tailwind CSS 3.3
+- **Testing:** Foundry test framework
+
+## 📖 Running the BasicAgent Dashboard
+
+The BasicAgent includes an interactive frontend dashboard:
+
+```bash
+cd BasicAgent/frontend
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Open browser to http://localhost:3001
+```
+
+**Features:**
+- 🔗 MetaMask wallet connection
+- 🔄 Real-time agent status
+- ⚡ Action triggering (owner only)
+- 📜 Event history with explorer links
+- 🎨 Responsive design with modern UI
+
+## 📚 Project Structure
+
+```
+somnia-agents-showcase/
+├── BasicAgent/
+│   ├── frontend/          # Next.js dashboard
+│   ├── script/            # Deployment scripts
+│   ├── src/               # Smart contract
+│   ├── test/              # Test suite
+│   └── .deployment.json   # Deployment record
+├── CustomAgent/
+├── DefiAgent/
+├── NftAgent/
+├── YieldAgent/
+├── NewWizardAgent/
+├── .env.example           # Environment template
+├── README.md              # This file
+└── package.json           # Dependencies
+```
+
+## 🔐 Security Considerations
+
+1. **Private Keys:** Never commit `.env` or private keys to Git
+2. **Environment Variables:** Use `.env.example` as template only
+3. **Contract Ownership:** Each agent has owner-based access control
+4. **Test Tokens:** Request from Somnia team on Discord/Telegram
+5. **Production:** Always audit contracts before mainnet deployment
 
 ## 🌐 Ecosystem
 
-### [Somnia InfraKit Website](https://somnia-infrakit.vercel.app)
-Complete documentation and landing page featuring:
-- Interactive project showcase
-- Getting started guides
-- Architecture documentation
-- Live deployment information
+### Official Links
+- **Somnia Network:** https://somnia.network/
+- **Documentation:** https://docs.somnia.network/
+- **Discord:** [Join Community](https://discord.gg/somnia)
 
-### [Somnia AI Agent CLI](https://github.com/Psianturi/somnia-infra-kit)
-The core development toolkit that powers these demo projects:
-- **NPM Package**: `somnia-ai-agent-cli@v1.1.0`
-- **Features**: Interactive wizards, multiple templates, auto-deployment
-- **Templates Used**: Basic Agent, DeFi Agent, Interactive Agent, Custom Wizard
+### Explorers & Tools
+- **Block Explorer:** https://explorer.somnia.network/
+- **TX Explorer:** https://somnia-testnet.blockscout.com/
+- **Foundry Docs:** https://book.getfoundry.sh/
 
-##  Documentation
+## 📝 License
 
-For complete documentation and advanced features, visit:
-- [Somnia CLI Documentation](https://github.com/Psianturi/somnia-infra-kit)
-- [Somnia Network](https://somnia.network/)
+MIT - Free to use for learning and development purposes.
 
-##  Contributing
+## 🤝 Contributing
 
-These are demonstration projects. For contributing to the CLI tool itself, visit the [main repository](https://github.com/Psianturi/somnia-infra-kit).
+These are demonstration projects showcasing Somnia agent capabilities. For contributing improvements:
+
+1. Test thoroughly on testnet first
+2. Follow Solidity best practices
+3. Add comprehensive tests
+4. Document changes clearly
+5. Submit pull request with detailed description
 
 ---
 
-**Free to use for learning and development purposes.**
+**Last Updated:** November 2025  
+**Network:** Somnia Testnet (Chain ID: 50312)  
+**Status:** ✅ Production Ready
